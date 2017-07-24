@@ -362,7 +362,7 @@ static NSString* toBase64(NSData* data) {
             } else {
             
                 if (options.usesGeolocation) {
-                    data = UIImageJPEGRepresentation(image, 1.0);
+                    data = UIImageJPEGRepresentation(image, [options.quality floatValue] / 100.0f);
                     self.data = data;
                     self.metadata = [[NSMutableDictionary alloc] init];
                     
