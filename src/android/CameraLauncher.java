@@ -787,10 +787,8 @@ private void processResultFromGallery(int destType, Intent intent) {
         Boolean cloudImage = false;
 
         // identify cloud photos ( there may be more!) , no exif processing
-        if (thisUri.contains("content://com.google") ||
-                (thisUri.contains("content://com.microsoft")) ||
-                (thisUri.contains("content://com.dropbox"))
-                ) {
+        //I removed 'content://com.google' because the files from google drive are downloaded to the phone. In this case I can read the exif data.
+        if (thisUri.contains("content://com.microsoft") || thisUri.contains("content://com.dropbox")) {
             thisJson = jsonError;
             cloudImage = true;
         } else {
