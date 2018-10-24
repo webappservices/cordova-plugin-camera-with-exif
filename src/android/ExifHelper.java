@@ -23,31 +23,32 @@ import java.io.IOException;
 import android.media.ExifInterface;
 
 public class ExifHelper {
-    
-
-     private String aperture = null;
-     private String datetime = null;
-     private String exposureTime = null;
-     private String flash = null;
-     private String focalLength = null;
-     private String gpsAltitude = null;
-     private String gpsAltitudeRef = null;
-     private String gpsDateStamp = null;
-     private String gpsLatitude = null;
-     private String gpsLatitudeRef = null;
-     private String gpsLongitude = null;
-     private String gpsLongitudeRef = null;
-     private String gpsProcessingMethod = null;
-     private String gpsTimestamp = null;
-     private String iso = null;
-     private String make = null;
-     private String model = null;
-     private String orientation = null;
-     private String whiteBalance = null;
 
 
-     private ExifInterface inFile = null;
-     private ExifInterface outFile = null;
+    private String aperture = null;
+    private String datetime = null;
+    private String datetimeOriginal = null;
+    private String exposureTime = null;
+    private String flash = null;
+    private String focalLength = null;
+    private String gpsAltitude = null;
+    private String gpsAltitudeRef = null;
+    private String gpsDateStamp = null;
+    private String gpsLatitude = null;
+    private String gpsLatitudeRef = null;
+    private String gpsLongitude = null;
+    private String gpsLongitudeRef = null;
+    private String gpsProcessingMethod = null;
+    private String gpsTimestamp = null;
+    private String iso = null;
+    private String make = null;
+    private String model = null;
+    private String orientation = null;
+    private String whiteBalance = null;
+
+
+    private ExifInterface inFile = null;
+    private ExifInterface outFile = null;
 
     /**
      * The file before it is compressed
@@ -75,6 +76,7 @@ public class ExifHelper {
     public void readExifData() {
         this.aperture = inFile.getAttribute(ExifInterface.TAG_APERTURE);
         this.datetime = inFile.getAttribute(ExifInterface.TAG_DATETIME);
+        this.datetimeOriginal = inFile.getAttribute(ExifInterface.TAG_DATETIME_ORIGINAL);
         this.exposureTime = inFile.getAttribute(ExifInterface.TAG_EXPOSURE_TIME);
         this.flash = inFile.getAttribute(ExifInterface.TAG_FLASH);
         this.focalLength = inFile.getAttribute(ExifInterface.TAG_FOCAL_LENGTH);
@@ -111,6 +113,9 @@ public class ExifHelper {
         }
         if (this.datetime != null) {
             this.outFile.setAttribute(ExifInterface.TAG_DATETIME, this.datetime);
+        }
+        if (this.datetimeOriginal != null) {
+            this.outFile.setAttribute(ExifInterface.TAG_DATETIME_ORIGINAL, this.datetime);
         }
         if (this.exposureTime != null) {
             this.outFile.setAttribute(ExifInterface.TAG_EXPOSURE_TIME, this.exposureTime);
