@@ -357,12 +357,12 @@ static NSString* toBase64(NSData* data) {
         
             if ((options.allowsEditing == NO) && (options.targetSize.width <= 0) && (options.targetSize.height <= 0) && (options.correctOrientation == NO) && (options.usesGeolocation == NO)){
                 // use image unedited as requested, no mods
-                data = UIImageJPEGRepresentation(image, 1.0);
+                data = UIImageJPEGRepresentation(image, [options.quality floatValue] / 100.0f);
                 
             } else {
             
                 if (options.usesGeolocation) {
-                    data = UIImageJPEGRepresentation(image, 1.0);
+                    data = UIImageJPEGRepresentation(image, [options.quality floatValue] / 100.0f);
                     self.data = data;
                     self.metadata = [[NSMutableDictionary alloc] init];
                     
