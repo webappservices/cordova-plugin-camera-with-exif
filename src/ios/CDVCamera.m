@@ -995,6 +995,7 @@ static NSString* toBase64(NSData* data) {
 + (instancetype) createFromPictureOptions:(CDVPictureOptions*)pictureOptions;
 {
     CDVCameraPicker* cameraPicker = [[CDVCameraPicker alloc] init];
+    cameraPicker.modalPresentationStyle = UIModalPresentationFullScreen;
     cameraPicker.pictureOptions = pictureOptions;
     cameraPicker.sourceType = pictureOptions.sourceType;
     cameraPicker.allowsEditing = pictureOptions.allowsEditing;
